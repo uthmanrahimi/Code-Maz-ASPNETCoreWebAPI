@@ -1,0 +1,2 @@
+2020-11-16 16:05:38.9212 INFO Here is info message from the Get method
+2020-11-16 16:05:38.9658 DEBUG Here is debug message from the Get method
