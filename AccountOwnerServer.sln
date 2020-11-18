@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountOwnerServer", "AccountOwnerServer\AccountOwnerServer.csproj", "{DA636289-6B7E-4218-A09E-C9AB9EBE41DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountOwnerServer", "AccountOwnerServer\AccountOwnerServer.csproj", "{DA636289-6B7E-4218-A09E-C9AB9EBE41DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{54140197-C6BF-43B1-950E-7CBBA98E2A9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{54140197-C6BF-43B1-950E-7CBBA98E2A9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{20DE5F9F-ACEC-43B4-A61F-0F900BAEC8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{20DE5F9F-ACEC-43B4-A61F-0F900BAEC8F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{09518C13-2529-4DB0-A361-DFFA3EF59B08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{BAFA1EDA-CB15-4502-92E4-813E6287D318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{20DE5F9F-ACEC-43B4-A61F-0F900BAEC8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20DE5F9F-ACEC-43B4-A61F-0F900BAEC8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20DE5F9F-ACEC-43B4-A61F-0F900BAEC8F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09518C13-2529-4DB0-A361-DFFA3EF59B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09518C13-2529-4DB0-A361-DFFA3EF59B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09518C13-2529-4DB0-A361-DFFA3EF59B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09518C13-2529-4DB0-A361-DFFA3EF59B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAFA1EDA-CB15-4502-92E4-813E6287D318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFA1EDA-CB15-4502-92E4-813E6287D318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFA1EDA-CB15-4502-92E4-813E6287D318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFA1EDA-CB15-4502-92E4-813E6287D318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

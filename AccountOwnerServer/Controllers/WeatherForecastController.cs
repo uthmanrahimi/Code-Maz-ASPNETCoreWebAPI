@@ -19,18 +19,20 @@ namespace AccountOwnerServer.Controllers
         };
 
         private readonly ILoggerManager _logger;
+        private readonly IRepositoryWrapper _repoWrapper;
 
-        public WeatherForecastController(ILoggerManager logger)
+        public WeatherForecastController(ILoggerManager logger, IRepositoryWrapper repoWrapper)
         {
             _logger = logger;
+            _repoWrapper = repoWrapper;
         }
       
 
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            _logger.LogInfo("Here is info message from the Get method");
-            _logger.LogDebug("Here is debug message from the Get method");
+            var domesticAccounts = _repoWrapper.Account.FindByCondition(x => x.AccountType.Equals("Domestic"));
+            var owners = _repoWrapper.Owner.FindAll();
             return new string[] { "value 1", "value 2" };
         }
     }

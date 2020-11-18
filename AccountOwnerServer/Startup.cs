@@ -29,6 +29,8 @@ namespace AccountOwnerServer
             services.ConfigureIISIntegration();
             services.AddControllers();
             services.ConfigureLoggerServices();
+            services.ConfigureDataContext(Configuration);
+            services.ConfigurRepositoryWrapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

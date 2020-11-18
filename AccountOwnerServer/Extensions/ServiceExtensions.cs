@@ -1,11 +1,11 @@
 ﻿using Contracts;
+using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Repository;
 
 namespace AccountOwnerServer.Extensions
 {
@@ -33,6 +33,17 @@ namespace AccountOwnerServer.Extensions
         public static void ConfigureLoggerServices(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager,LoggerManager>();
+        }
+
+        public static void ConfigureDataContext(this IServiceCollection services,IConfiguration configuration)
+        {
+            string connectionString = configuration.GetConnectionString("Default");
+            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+        }
+
+        public static void ConfigurRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }
