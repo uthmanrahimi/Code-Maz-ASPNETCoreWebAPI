@@ -1,0 +1,7 @@
+2020-11-28 15:17:16.6689 INFO Returned all owners from database.
+2020-11-28 15:32:06.6853 INFO Returned all owners from database.
+2020-11-28 15:40:14.7145 INFO Returned all owners from database.
+2020-11-28 15:41:08.0149 INFO Returned all owners from database.
+2020-11-28 15:44:14.9212 INFO Returned all owners from database.
+2020-11-28 15:44:50.0701 INFO Returned all owners from database.
+2020-11-28 15:44:51.0121 INFO Returned all owners from database.

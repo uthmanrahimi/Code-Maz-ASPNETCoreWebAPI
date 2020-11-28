@@ -1,4 +1,5 @@
 using AccountOwnerServer.Extensions;
+using AutoMapper;
 using Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,7 @@ namespace AccountOwnerServer
             services.ConfigureLoggerServices();
             services.ConfigureDataContext(Configuration);
             services.ConfigurRepositoryWrapper();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
