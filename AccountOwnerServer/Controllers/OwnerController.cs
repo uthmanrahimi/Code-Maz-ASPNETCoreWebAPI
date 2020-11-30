@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
 using Entities.DTO;
+using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,7 +45,7 @@ namespace AccountOwnerServer.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OwnerById")]
         public IActionResult GetOwnerById(Guid id)
         {
             try
@@ -91,6 +92,89 @@ namespace AccountOwnerServer.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong inside GetOwnerWithDetails action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CreateOwner([FromBody] OwnerForCreationDto owner)
+        {
+            try
+            {
+                if (owner == null)
+                {
+                    _logger.LogError("Owner object sent from client is null.");
+                    return BadRequest("Owner object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid owner object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+                var ownerEntity = _mapper.Map<Owner>(owner);
+                _repository.Owner.CreateOwner(ownerEntity);
+                _repository.Save();
+                var createdOwner = _mapper.Map<OwnerDto>(ownerEntity);
+                return CreatedAtRoute("OwnerById", new { id = createdOwner.Id }, createdOwner);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside CreateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateOwner(Guid id, [FromBody] OwnerForUpdateDto owner)
+        {
+            try
+            {
+                if (owner == null)
+                {
+                    _logger.LogError("Owner object sent from client is null.");
+                    return BadRequest("Owner object is null");
+                }
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid owner object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+                var ownerEntity = _repository.Owner.GetOwnerById(id);
+                if (ownerEntity == null)
+                {
+                    _logger.LogError($"Owner with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                _mapper.Map(owner, ownerEntity);
+                _repository.Owner.UpdateOwner(ownerEntity);
+                _repository.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside UpdateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOwner(Guid id)
+        {
+            try
+            {
+                var owner = _repository.Owner.GetOwnerById(id);
+                if (owner == null)
+                {
+                    _logger.LogError($"Owner with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+                _repository.Owner.DeleteOwner(owner);
+                _repository.Save();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside DeleteOwner action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
